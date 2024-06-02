@@ -24,10 +24,16 @@ def plot_pie_chart(df, column):
     fig.add_subplot(1,2,2)
     no_heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%')
     plt.title(f'percentage of {column} in heart disease group (left) and healthy group (right)')
+    plt.show()
     
 def contingency_table(data, column):
-    data_crosstab = pd.crosstab(index=[data[column]], columns=data['heart_disease_diagnosis'])#, margins = False) 
-    print(data_crosstab)
+    """_summary_
+
+    Args:
+        data (dataframe): write the dataframe you are working on
+        column (string): write the name of the column
+    """
+    data_crosstab = pd.crosstab(index=[data[column]], columns=data['heart_disease_diagnosis'])
     fig = plt.figure(figsize = (10,10))
     fig.add_subplot()    
     sns.heatmap(data_crosstab, annot = True, fmt="d", cmap = 'RdYlGn')
