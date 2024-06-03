@@ -10,18 +10,19 @@ import seaborn as sns
    
 def make_count_plots(df, columns):
     """
-    Plots countplots to have an idea 
-    of the dataset, about the gender, age,
-    and disease group distribution.
+    Makes countplots of a variable
+    to visualize its distribution.
     
     Args:
         df (dataframe): name of the dataframe you want to use
+        columns (list): takes a list of columns to visualize the variables
     """
     
     for column in columns:
-        sns.countplot(data = df, x = 'column')
+        sns.countplot(data = df, x = column)
         plt.ylabel('number of patients')
         plt.title(f'Distribution of {column}')
+        plt.show()
     
    
 
@@ -52,6 +53,8 @@ def hist_plot_numericals(df): # not tested
 def plot_pie_chart(df, column):
     """
     Plots pie chart for categorical variables
+    in the healthy or heart disease group.
+    
     Args:
         df: name of the dataframe you want to use
         column (string): name of the column
@@ -69,7 +72,9 @@ def plot_pie_chart(df, column):
     
 def contingency_table(data, column):
     """
-    Plots contingency table into a heatmap for categorical variables
+    Makes contingency table for categorical variables
+    and heart_disease_diagnosis
+    and plots it into a heatmap.
 
     Args:
         data (dataframe): name of the dataframe you want to use
@@ -78,7 +83,7 @@ def contingency_table(data, column):
     data_crosstab = pd.crosstab(index=[data[column]], columns=data['heart_disease_diagnosis'])
     fig = plt.figure(figsize = (10,10))
     fig.add_subplot()    
-    sns.heatmap(data_crosstab, annot = True, fmt="d", cmap = 'RdYlGn')
+    sns.heatmap(data_crosstab, cmap = 'RdYlGn')
     plt.show()
     
 def look_for_correlations(df):
@@ -93,6 +98,7 @@ def look_for_correlations(df):
     num_df['heart_disease_diagnosis']=df['heart_disease_diagnosis']
     
     sns.pairplot(num_df, kind = 'reg', hue = 'heart_disease_diagnosis', corner = True)
+    plt.show()
     
     sns.heatmap(num_df.corr(), cmap = 'RdYlGn', vmin = -0.5, vmax =0.5)
     plt.show()
