@@ -26,7 +26,7 @@ def make_count_plots(df, columns):
     
    
 
-def hist_plot_numericals(df): # not tested
+def hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis'): 
     """
     Plots histograms for 
     each numerical variable
@@ -36,16 +36,18 @@ def hist_plot_numericals(df): # not tested
         df (dataframe): name of the dataframe you want to use
     """
     # Distinguish the dataset between numerical and categorical variables
-    categorical_columns = ['chest_pain', 'st_slope', 'thallium_stress_test', 'rest_ecg']
-    boolean_columns = ['sex', 'high_fasting_blood_sugar', 'exercise_angina']
-    
+
+    num_df = df.select_dtypes(include='number')
+    total_numericals = len(num_df.columns)
+
+    num_df[hue_variable]=df[hue_variable]
     # Creating a figure for subplotting 
-    fig, axes = plt.subplots(ncols = 6, figsize=(30, 6))
+    fig, axes = plt.subplots(ncols=total_numericals, figsize=(30, 6))
 
     # creating a loop to display histograms of numerical variables
-    for ax, column in zip(axes, df.drop(columns=categorical_columns+boolean_columns).columns):
-        if "heart_disease_diagnosis" in column: continue
-        sns.histplot(data = df, x = column, hue = "heart_disease_diagnosis", bins = 25, stat = "percent", common_norm = False, palette ="viridis", ax = ax)
+    for ax, column in zip(axes, num_df.columns):
+        if hue_variable in column: continue
+        sns.histplot(data = df, x = column, hue = hue_variable, bins = 25, stat = "percent", common_norm=False, palette ="viridis", ax = ax)
     
     plt.tight_layout()
     plt.show()
