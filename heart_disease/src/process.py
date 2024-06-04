@@ -26,7 +26,7 @@ def process_categorical_columns(df):
     df['sex'].replace({0 : 'female', 1 : 'male'}, inplace = True)
     
     # Change variables type to 'category'
-    df[['chest_pain','st_slope', 'thallium_stress_test', 'rest_ecg']] = df[['chest_pain','st_slope', 'thallium_stress_test', 'rest_ecg']].astype('category')
+    df[['sex', 'chest_pain','st_slope', 'thallium_stress_test', 'rest_ecg']] = df[['sex', 'chest_pain','st_slope', 'thallium_stress_test', 'rest_ecg']].astype('category')
     
     return df
 
