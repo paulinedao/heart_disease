@@ -37,7 +37,7 @@ def process_boolean_columns(df):
     and renames the columns.
 
     Args:
-        df (_type_): _description_
+        df (dataframe): write the name of the dataframe
     """
     # modify diagnosis columns: from 1-4 to 1 to indicate presence of heart disease with 1 and absence with 0
     for i in range(1,5):
