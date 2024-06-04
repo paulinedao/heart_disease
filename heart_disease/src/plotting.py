@@ -66,7 +66,7 @@ def plot_pie_chart(df, column):
     
 
     # Pie plot for heart_disease group  
-    fig = plt.figure(figsize = (10,10))
+    fig = plt.figure(figsize = (10,5))
     fig.add_subplot(1,2,1)
     heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%', radius=0.8, wedgeprops={'linewidth': 3.0, 'edgecolor': 'white'})
     plt.ylabel('') # Hide y-label
@@ -76,12 +76,12 @@ def plot_pie_chart(df, column):
     no_heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%', radius=0.8, wedgeprops={'linewidth': 3.0, 'edgecolor': 'white'})
     plt.ylabel('')
     
-    plt.title(f'percentage of {column} in heart disease group (left) and healthy group (right)', loc='left')
+    fig.suptitle(f'percentage of {column} in heart disease group (left) and healthy group (right)')
     plt.show()
     
 def contingency_table(data, column):
     """
-    Makes contingency table for categorical variables
+    Makes contingency table for boolean variables
     and heart_disease_diagnosis
     and plots it into a heatmap.
 
@@ -97,7 +97,7 @@ def contingency_table(data, column):
     
 def look_for_correlations(df):
     """
-    Plots a pairplot for numerical variables,
+    Plots a regression pairplot for numerical variables,
     and a heatmap to look at correlations.
     
     Arg:
