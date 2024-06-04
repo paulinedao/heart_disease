@@ -70,13 +70,15 @@ def plot_pie_chart(df, column):
     fig.add_subplot(1,2,1)
     heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%', radius=0.8, wedgeprops={'linewidth': 3.0, 'edgecolor': 'white'})
     plt.ylabel('') # Hide y-label
+    plt.title('heart disease group')
     
     # Pie plot for no_heart_disease group
     fig.add_subplot(1,2,2)
     no_heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%', radius=0.8, wedgeprops={'linewidth': 3.0, 'edgecolor': 'white'})
     plt.ylabel('')
+    plt.title('healthy group')
     
-    fig.suptitle(f'percentage of {column} in heart disease group (left) and healthy group (right)')
+    fig.suptitle(f'percentage of {column} in heart disease group and healthy group')
     plt.show()
     
 def contingency_table(data, column):
