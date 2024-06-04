@@ -47,7 +47,7 @@ def hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis'):
     # creating a loop to display histograms of numerical variables
     for ax, column in zip(axes, num_df.columns):
         if hue_variable in column: continue
-        sns.histplot(data = df, x = column, hue = hue_variable, bins = 25, stat = "percent", common_norm=False, palette ="viridis", ax = ax)
+        sns.histplot(data = df, x = column, hue = hue_variable, bins = 25, stat = "percent", common_norm=False, ax = ax)
     
     plt.tight_layout()
     plt.show()
@@ -63,12 +63,19 @@ def plot_pie_chart(df, column):
     """
     heart_disease = df[df['heart_disease_diagnosis'] == 1]
     no_heart_disease = df[df['heart_disease_diagnosis'] == 0] 
-      
+    
+
+    # Pie plot for heart disease group  
     fig = plt.figure(figsize = (10,10))
     fig.add_subplot(1,2,1)
     heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%')
+    plt.ylabel('') # Hide y-label
+    
+    # Pie plot for healthy group
     fig.add_subplot(1,2,2)
     no_heart_disease[column].value_counts().sort_index().plot(kind = 'pie', autopct = '%1.1f%%')
+    plt.ylabel('')
+    
     plt.title(f'percentage of {column} in heart disease group (left) and healthy group (right)')
     plt.show()
     
