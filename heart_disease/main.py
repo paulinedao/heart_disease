@@ -8,9 +8,6 @@ from src.load import *
 from src.process import *
 
 
-
-
-
 # Make count plots for the variables 'heart_disease_diagnosis'
 # make_count_plots(df, ['sex', 'heart_disease_diagnosis'])
 
@@ -39,23 +36,8 @@ if __name__ == "__main__":
         print(df.head())
         
     if args.plot:
-        if os.path.exists('data/processed_data/processed_data'):
-            df = pd.read_csv('data/processed_data/processed_data')
-            print(df.head())
-        else:
-            df = process_all('data/raw_data/processed.cleveland.data')
-
-        make_count_plots(df, ['sex', 'heart_disease_diagnosis'])
-
-        hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis')
-
-        categorical_columns = ['chest_pain', 'st_slope', 'thallium_stress_test', 'rest_ecg']
-        boolean_columns = ['sex', 'high_fasting_blood_sugar', 'exercise_angina']
-
-        for column in categorical_columns:
-            plot_pie_chart(df, column)
-
-        for column in boolean_columns:
-            contingency_table(df, column)
-
-        look_for_correlations(df)
+        plot_all(path='data/processed_data/processed_data')
+        
+    # if args.all:
+        # Runs all blocks
+        
