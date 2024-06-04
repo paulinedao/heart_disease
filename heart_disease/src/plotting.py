@@ -4,6 +4,7 @@ Module with plotting functions
     
 """
 
+import os
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -113,3 +114,31 @@ def look_for_correlations(df):
     
     sns.heatmap(num_df.corr(), cmap = 'RdYlGn', vmin = -0.5, vmax =0.5)
     plt.show()
+    
+def plot_all(path='../data/processed_data/processed_data'):
+    """
+    Processes the data and makes plots.
+
+    Args:
+        path (string): write path to the data
+    """
+    if os.path.exists(path):
+        df = pd.read_csv(path)
+        print(df.head())
+    else:
+        df = process_all('../data/raw_data/processed.cleveland.data')
+
+    make_count_plots(df, ['sex', 'heart_disease_diagnosis'])
+
+    hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis')
+
+    categorical_columns = ['chest_pain', 'st_slope', 'thallium_stress_test', 'rest_ecg']
+    boolean_columns = ['sex', 'high_fasting_blood_sugar', 'exercise_angina']
+
+    for column in categorical_columns:
+        plot_pie_chart(df, column)
+
+    for column in boolean_columns:
+        contingency_table(df, column)
+
+    look_for_correlations(df)
