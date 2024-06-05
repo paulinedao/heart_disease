@@ -5,6 +5,7 @@ impute values in the dataset.
 """
 import os    
 import pandas as pd
+from src.process import process_all
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 
@@ -51,21 +52,13 @@ def impute_nan(df):
 
 def clean_all(df):
     """
-    Drops duplicates and handles
-    NaNs.
+    Drops duplicates and handles NaNs.
+    Assumes that the processing of the 
+    dataframe has been done beforehand.
 
     Args:
         df (_type_): _description_
     """
-    if os.path.exists('../data/processed_data/processed_data'):
-        df = pd.read_csv('../data/processed_data/processed_data')
-        print(df.head())
-    else:
-        df = process_all('../data/raw_data/processed.cleveland.data')
-        
     df.drop_duplicates(inplace=True)
-    impute_nan(df)
-
-# import os
-#df.to_excel(path.join('data/processed_data/clean_data'), index = False)
-# df.ExcelWriter(path)
+    df_clean = impute_nan(df)
+    return df_clean
