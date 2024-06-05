@@ -1,11 +1,15 @@
 """
 Module for testing
 """
-
+import sys
+import os
 import unittest
+
+package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
+sys.path.insert(0, package_dir)
+
 from heart_disease.src.load import load_data
 from heart_disease.src.load import describe_data
-
 
 class TestLoad(unittest.TestCase): 
     @classmethod

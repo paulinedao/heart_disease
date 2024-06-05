@@ -2,13 +2,16 @@
 Module for testing
 """
 
+import sys
+import os
 import unittest
+
+package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
+sys.path.insert(0, package_dir)
+
 from heart_disease.src.process import process_categorical_columns
 from heart_disease.src.process import process_boolean_columns
 from heart_disease.src.process process_all
-
-
-
         
 class TestProcess(unittest.TestCase):
     @classmethod

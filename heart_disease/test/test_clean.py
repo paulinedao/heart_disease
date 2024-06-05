@@ -1,12 +1,19 @@
 """
 Module for testing
 """
-
+import sys
+import os
 import unittest
-from heart_disease.src.clean import impute_nan
-from heart_disease.src.clean import clean_all
 
-class TestClean(self):
+package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, package_dir)
+
+from src.clean import impute_nan
+from src.clean import clean_all
+
+
+
+class TestClean(unittest.TestCase):
     
     @classmethod
     # load the dataframe to use it as a test

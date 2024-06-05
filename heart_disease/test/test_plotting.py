@@ -1,8 +1,14 @@
 """
 Module for testing
 """
-
+import sys
+import os
 import unittest
+
+
+package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__),'..'))
+sys.path.insert(0, package_dir)
+
 from heart_disease.src.plotting import make_count_plots
 from heart_disease.src.plotting import hist_plot_numericals
 from heart_disease.src.plotting import plot_pie_chart
@@ -10,8 +16,7 @@ from heart_disease.src.plotting import contingency_table
 from heart_disease.src.plotting import look_for_correlations
 from heart_disease.src.plotting import plot_all
 
-
-class TestPlotting(self):
+class TestPlotting(unittest.TestCase):
     @classmethod
     # load the dataframe to use it as a test
     def setUp(cls): 
