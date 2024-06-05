@@ -52,9 +52,10 @@ def process_boolean_columns(df):
     return df
 
 def process_all(path):
+    # add input path and output path
     df=load_data(path)
     
     process_categorical_columns(df)
     process_boolean_columns(df)
-    df.to_csv('data/processed_data/processed_data')
+    df.to_csv('data/processed_data/processed_data.csv')
     return df
