@@ -23,7 +23,12 @@ if __name__ == '__main__':
         print(df.head())
         
     if args.plot:
-        plot_all(path='data/processed_data/processed_data')
+        if os.path.exists('data/processed_data/processed_data.csv'):
+            df = pd.read_csv('data/processed_data/processed_data.csv')
+            plot_all(df)
+        else:
+            print('Process the data first by entering --process in the terminal')
+            
         
     if args.clean:
         clean_all
