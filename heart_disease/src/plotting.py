@@ -5,7 +5,6 @@ Module with plotting functions
 """
 
 import os
-from src.process import process_all
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
