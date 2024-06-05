@@ -118,23 +118,22 @@ def look_for_correlations(df):
 def plot_all(df):
     """
     Makes plots assuming that the dataframe
-    was loaded and processed first.
+    was loaded and processed first. 
+    A total of 8 defaults plots will be generated.
 
     Args:
-        path (string): write path to the data
+        df (dataframe): write name of the processed dataframe
     """
 
     make_count_plots(df, ['sex', 'heart_disease_diagnosis'])
 
     hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis')
 
-    categorical_columns = ['chest_pain', 'st_slope', 'thallium_stress_test', 'rest_ecg']
-    boolean_columns = ['sex', 'high_fasting_blood_sugar', 'exercise_angina']
+    categorical_columns = ['chest_pain', 'thallium_stress_test']
 
     for column in categorical_columns:
         plot_pie_chart(df, column)
 
-    for column in boolean_columns:
-        contingency_table(df, column)
+    contingency_table(df, 'sex')
 
     look_for_correlations(df)
