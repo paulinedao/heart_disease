@@ -25,7 +25,7 @@ class TestPlotting(unittest.TestCase):
         
     def test_make_count_plots(self):
         # Check if the function executes without errors
-        make_count_plots(self._df)
+        make_count_plots(self._df, ['heart_disease_diagnosis'])
 
     def test_hist_plot_numericals(self):
         # Check if the function executes without errors
@@ -33,11 +33,11 @@ class TestPlotting(unittest.TestCase):
         
     def test_plot_pie_chart(self):
         # Check if the function executes without errors
-        plot_pie_chart(self._df)
+        plot_pie_chart(self._df, 'st_slope')
         
     def test_contingency_table(self):
         # Check if the function executes without errors
-        contingency_table(self._df)
+        contingency_table(self._df, 'exercise_angina')
         
     def test_look_for_correlations(self):
         # Check if the function executes without errors
