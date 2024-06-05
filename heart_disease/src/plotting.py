@@ -5,6 +5,7 @@ Module with plotting functions
 """
 
 import os
+from src.process import process_all
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
@@ -115,18 +116,14 @@ def look_for_correlations(df):
     sns.heatmap(num_df.corr(), cmap = 'RdYlGn', vmin = -0.5, vmax =0.5)
     plt.show()
     
-def plot_all(path='../data/processed_data/processed_data'):
+def plot_all(df):
     """
-    Processes the data and makes plots.
+    Makes plots assuming that the dataframe
+    was loaded and processed first.
 
     Args:
         path (string): write path to the data
     """
-    if os.path.exists(path):
-        df = pd.read_csv(path)
-        print(df.head())
-    else:
-        df = process_all('../data/raw_data/processed.cleveland.data')
 
     make_count_plots(df, ['sex', 'heart_disease_diagnosis'])
 
