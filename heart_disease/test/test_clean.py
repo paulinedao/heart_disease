@@ -14,8 +14,6 @@ from src.clean import clean_all
 from src.clean import impute_nan
 
 
-
-
 class TestClean(unittest.TestCase):
     
     @classmethod
