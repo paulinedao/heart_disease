@@ -50,6 +50,7 @@ def hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis'):
         if hue_variable in column: continue
         sns.histplot(data = df, x = column, hue = hue_variable, bins = 25, stat = "percent", common_norm=False, ax = ax)
     
+    fig.suptitle('Distribution of features')
     plt.tight_layout()
     plt.show()
     
@@ -95,7 +96,8 @@ def contingency_table(data, column):
     data_crosstab = pd.crosstab(index=[data[column]], columns=data['heart_disease_diagnosis'])
     fig = plt.figure(figsize = (10,10))
     fig.add_subplot()    
-    sns.heatmap(data_crosstab, cmap = 'RdYlGn')
+    sns.heatmap(data_crosstab)
+    plt.title('Contingency table')
     plt.show()
     
 def look_for_correlations(df):
@@ -110,9 +112,11 @@ def look_for_correlations(df):
     num_df['heart_disease_diagnosis']=df['heart_disease_diagnosis']
     
     sns.pairplot(num_df, kind = 'reg', hue = 'heart_disease_diagnosis', corner = True)
+    plt.suptitle('Exploratory data visualization of numerical features')
     plt.show()
     
     sns.heatmap(num_df.corr(), cmap = 'RdYlGn', vmin = -0.5, vmax =0.5)
+    plt.title('Correlation heatmap')
     plt.show()
     
 def plot_all(df):
