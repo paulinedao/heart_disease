@@ -46,7 +46,9 @@ def impute_nan(df):
     
     df_clean = pd.DataFrame(data=data_column_transformed, columns=df.columns)
     
-    df_clean[boolean_features] = df[boolean_features].astype("bool")
+    df_clean[boolean_features] = df[boolean_features].astype('bool')
+    df_clean[numerical_features] = df[numerical_features].astype('number')
+    df_clean[categorical_features] = df[categorical_features].astype('category')
 
     return df_clean
 
