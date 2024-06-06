@@ -15,7 +15,7 @@ def load_data(path):
     
     df.columns = [
     'age', 'sex', 'chest_pain', 'rest_blood_pressure', 'serum_cholesterol', 'fasting_blood_sugar', 'rest_ecg',
-    'max_heart_rate_thal', 'exercise_angina', 'st_oldpeak', 'st_slope', 'nb_major_vessels', 'thallium_stress_test', 'diagnosis'
+    'max_heart_rate_thal', 'exercise_angina', 'st_oldpeak', 'st_slope', 'nb_major_vessels', 'thallium_stress_test', 'heart_disease_diagnosis'
     ]
     
     return df
