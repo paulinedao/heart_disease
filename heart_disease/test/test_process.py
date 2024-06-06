@@ -21,22 +21,21 @@ class TestProcess(unittest.TestCase):
 
         
     def test_process_categorical_columns(self):
-        
+        # Check that the type of the column is 'category'
         categorical_columns = ['sex', 'chest_pain','st_slope', 'thallium_stress_test', 'rest_ecg']
         for column in categorical_columns:
             self.assertEqual(self._df.dtypes[column], 'category')
    
         
     def test_process_boolean_columns(self):
-        
+        # Check that the type of the column is 'bool'
         boolean_columns = ['fasting_blood_sugar', 'exercise_angina', 'heart_disease_diagnosis']
         for column in boolean_columns:
             self.assertEqual(self._df.dtypes[column], 'bool')
 
     def test_process_all(self):
+        # Check that the file has been created
         self.assertTrue(os.path.exists('data/processed_data/processed_data.csv'))
-        
-
 
 if __name__ == '__main__':
     unittest.main()
