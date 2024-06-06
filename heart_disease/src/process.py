@@ -25,7 +25,7 @@ def process_categorical_columns(df):
     df['chest_pain'].replace({1: 'typical angina', 2: 'atypical angina', 3: 'non-anginal pain', 4: 'asymptomatic'}, inplace=True )
     df['rest_ecg'].replace({0: 'normal', 1: 'ST-T wave abnormality', 2: 'probable or definite LV hypertrophy'}, inplace = True)
     df['st_slope'].replace({1: 'upsloping',  2: 'flat', 3: 'downsloping'}, inplace = True)
-    df['thallium_stress_test'].replace({3 : 'normal', 6 : 'fixed defect', 7 : 'reversable defect'}, inplace = True)
+    df['thallium_stress_test'].replace({3 : 'normal', 6 : 'fixed defect', 7 : 'reversible defect'}, inplace = True)
     df['sex'].replace({0 : 'female', 1 : 'male'}, inplace = True)
     
     # Change variables type to 'category'
