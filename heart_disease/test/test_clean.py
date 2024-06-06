@@ -4,6 +4,8 @@ Module for testing
 import sys
 import os
 import unittest
+import pandas as pd 
+import numpy as np
 
 package_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, package_dir)
@@ -31,8 +33,27 @@ class TestClean(unittest.TestCase):
        self.assertEqual(col_with_na, 0)
         
     def test_clean_all(self):
-        # test that the number of duplicated and na values is null
-        duplicated_entries = self._df.duplicated().sum() 
+        # create test data
+        import pandas as pd
+
+        # Create a test dataframe with some duplicate entries
+        self.df = pd.DataFrame(data = {
+        'A': [1, 2, np.nan, 1, 2, np.nan],
+        'B': ['cat1', 'cat2', np.nan, 'cat1', 'cat2', np.nan],
+        'C': [True, False, np.nan, True, False, np.nan],
+        'D': ['d1', 'd2', 'd3', 'd1', 'd2', 'd3']})
+
+        # use clean_all function
+        self.df = clean_all(self.df)
+        
+        # define col_with_na 
+        col_with_na =  self.df.isna().any().sum()
+        
+        # test that there are no columns with null values
+        self.assertEqual(col_with_na, 0)
+
+        # test that the number of duplicated is null
+        duplicated_entries = self.df.duplicated().sum() 
         
         self.assertEqual(duplicated_entries, 0)
       
