@@ -3,7 +3,10 @@ Module to process the dataframe,
 renaming, replacing categories' or column names, 
 and changing variable types
 """
+
 from src.load import *
+
+
 
 def process_categorical_columns(df):
     """
@@ -41,13 +44,10 @@ def process_boolean_columns(df):
     """
     # modify diagnosis columns: from 1-4 to 1 to indicate presence of heart disease with 1 and absence with 0
     for i in range(1,5):
-        df['diagnosis'].replace(i, 1, inplace = True)
+        df['heart_disease_diagnosis'].replace(i, 1, inplace = True)
     
     # Replace the type of 'fasting_blood_sugar', 'exercise_angina' and 'diagnosis' with boolean type
-    df[['fasting_blood_sugar', 'exercise_angina', 'diagnosis']] = df[['fasting_blood_sugar', 'exercise_angina', 'diagnosis']].astype(bool)
-    
-    # Renaming column names using  df.rename(columns={'oldName1': 'newName1', 'oldName2': 'newName2'}, inplace=True)
-    df.rename(columns={'fasting_blood_sugar': 'high_fasting_blood_sugar', 'diagnosis': 'heart_disease_diagnosis'}, inplace=True)
+    df[['fasting_blood_sugar', 'exercise_angina', 'heart_disease_diagnosis']] = df[['fasting_blood_sugar', 'exercise_angina', 'heart_disease_diagnosis']].astype(bool)
     
     return df
 
