@@ -15,39 +15,36 @@ def outlier_report(df, zscorethreshold):
     the dataframe with the values is returned.
 
     Args:
-        df (dataframe): numerical dataframe
+        df (dataframe): dataframe
         zscorethreshold (float): z-score threshold 
         
     """
+    # select numerical features from the given dataframe
+    df = df.select_dtypes(include='number')
+    df = df.drop(columns=['nb_major_vessels'])
     
-    outliers_df = []
-    indexvals = []
-    outliers_columns = []
+    outliers_info = []
     
     for column in df.columns:
         mean_column = np.mean(df[column])
         sd_column = np.std(df[column])   
         
-        # pull out outliers
+        # pull out outliers from dataframe
         outliers = df.loc[((abs(df[column]-mean_column))/sd_column) > zscorethreshold]
         
-        # select columns with outliers and add infos to the lists
+        # Add outliers infos to the lists
         if len(outliers) == 0:
             pass
         else:
-            outliers_df.append(outliers.values)
-            indexvals.append(outliers.index.values)
-            outliers_columns.append(column)
+            outliers_info.append((column, outliers))
 
     # print report per column
-    for number, item in enumerate(outliers_df):
-        print('\nData points with outliers in column {}\n'.format(outliers_columns[number]))
-    
-        df = pd.DataFrame(outliers_df[number], index=indexvals[number], columns=df.columns)
-        
-        print(df)
-        print(f'\nValues of outliers: {df[outliers_columns[number]].values}')
-        print(f'\nIndex values of outliers as a list: {indexvals[number]}')
+    for column, outlier in outliers_info:
+        print(f'\nData points with outliers in column {column}\n')
+            
+        print(outliers)
+        print(f'\nValues of outliers: {outliers[column].values}')
+        print(f'\nIndex values of outliers as a list: {list(outliers.index)}')
         print('---------------------------------------------------------------------------')
     
 def handle_outliers(df, zscorethreshold):
@@ -56,10 +53,25 @@ def handle_outliers(df, zscorethreshold):
     zscore strategy. 
 
     Args:
-        df (dataframe): numerical dataframe
+        df (dataframe): dataframe
         zscorethreshold (float): z-score threshold
     """
-    
-    df = df[(np.abs(stats.zscore(df)) < zscorethreshold).all(axis=1)]
 
+    # select numerical features from the given dataframe
+    df_numerical = df.select_dtypes(include='number')
+    
+    
+    # calculate z-score of the numerical dataframe
+    z_scores = np.abs(stats.zscore(df_numerical))
+
+    # create a filter using the z-score as threshold
+    kept_rows = (z_scores < zscorethreshold).all(axis=1)
+    
+    df_new  = df[kept_rows]
+
+    return df_new      
+
+def outlier_report_handle(df, zscorethreshold):
+    outlier_report(df, zscorethreshold)
+    df = handle_outliers(df, zscorethreshold)
     return df

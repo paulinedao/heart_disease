@@ -1,7 +1,20 @@
 # Heart disease Project
 
 # Table of Contents
-
+- [Description](#description)
+- [Organization of the package](#organization-of-the-package)
+- [Installation](#installation)
+  - [Download the package heart_disease](#download-the-package-heart-disease)
+  - [Requirements](#requirements)
+- [Run the package](#run-the-package)
+  - [Run parts](#run-parts)
+  - [Run all](#run-all)
+  - [Input](#input)
+  - [Output](#output)
+- [Modularity and reusability](#modularity-and-reusability)
+  - [Modules organization](#modules-organization)
+  - [Reusability](#reusability)
+- [Run unit tests](#run-unit-tests)
 
 
 ## Description
@@ -52,7 +65,7 @@ To run the 'plotting' module you need to process the data beforehand. To generat
 python3.11 main.py --plot
 ```
 
-To run the 'clean' module, the data needs to be processed beforehand. To clean the data, write:
+To module 'clean' is used on thee processed dataset. To clean the data, write:
 ```bash
 python3.11 main --clean
 ```
@@ -90,4 +103,16 @@ python3.11 test/test_load.py
 python3.11 test/test_process.py
 python3.11 test/test_plotting.py
 python3.11 test/test_clean.py
+```
+
+To check the coverage of the test:
+```bash
+pip install coverage
+```
+```bash
+coverage run -m unittest test_name.py
+```
+To generate a report:
+```bash
+coverage report -m
 ```

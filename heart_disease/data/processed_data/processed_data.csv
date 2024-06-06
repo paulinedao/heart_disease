@@ -1,4 +1,4 @@
-,age,sex,chest_pain,rest_blood_pressure,serum_cholesterol,high_fasting_blood_sugar,rest_ecg,max_heart_rate_thal,exercise_angina,st_oldpeak,st_slope,nb_major_vessels,thallium_stress_test,heart_disease_diagnosis
+,age,sex,chest_pain,rest_blood_pressure,serum_cholesterol,fasting_blood_sugar,rest_ecg,max_heart_rate_thal,exercise_angina,st_oldpeak,st_slope,nb_major_vessels,thallium_stress_test,heart_disease_diagnosis
 0,63.0,male,typical angina,145.0,233.0,True,probable or definite LV hypertrophy,150.0,False,2.3,downsloping,0.0,fixed defect,False
 1,67.0,male,asymptomatic,160.0,286.0,False,probable or definite LV hypertrophy,108.0,True,1.5,flat,3.0,normal,True
 2,67.0,male,asymptomatic,120.0,229.0,False,probable or definite LV hypertrophy,129.0,True,2.6,flat,2.0,reversable defect,True

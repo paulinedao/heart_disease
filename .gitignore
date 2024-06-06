@@ -1,1 +1,2 @@
 heart_disease/src/__pycache__/*.pyc
+heart_disease/test/test_clean.py
