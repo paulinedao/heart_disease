@@ -38,9 +38,8 @@ def outlier_report(df, zscorethreshold):
             outliers_info.append((column, outliers))
 
     # print report per column
-    for column, outlier in outliers_info:
-        print(f'\nData points with outliers in column {column}\n')
-            
+    for column, outliers in outliers_info:
+        print(f'\nData points with outliers in column {column}\n')       
         print(outliers)
         print(f'\nValues of outliers: {outliers[column].values}')
         print(f'\nIndex values of outliers as a list: {list(outliers.index)}')
