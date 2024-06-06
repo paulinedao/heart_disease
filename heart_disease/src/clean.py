@@ -43,8 +43,12 @@ def impute_nan(df):
     
     # Transform the columns in train and test set
     data_column_transformed = preprocess_columns.transform(df)
+
+    # Create list with the same order of variables 
+    input_features = list(numerical_features) + list(categorical_features) + list(boolean_features)
     
-    df_clean = pd.DataFrame(data=data_column_transformed, columns=df.columns)
+
+    df_clean = pd.DataFrame(data=data_column_transformed, columns=input_features)
     
     df_clean[boolean_features] = df_clean[boolean_features].astype('bool')
     df_clean[numerical_features] = df_clean[numerical_features].astype('float64')
