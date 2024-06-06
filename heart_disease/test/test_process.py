@@ -29,7 +29,7 @@ class TestProcess(unittest.TestCase):
         
     def test_process_boolean_columns(self):
         
-        boolean_columns = ['high_fasting_blood_sugar', 'exercise_angina', 'heart_disease_diagnosis']
+        boolean_columns = ['fasting_blood_sugar', 'exercise_angina', 'heart_disease_diagnosis']
         for column in boolean_columns:
             self.assertEqual(self._df.dtypes[column], 'bool')
 
