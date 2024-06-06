@@ -21,7 +21,6 @@ def outlier_report(df, zscorethreshold):
     """
     # select numerical features from the given dataframe
     df = df.select_dtypes(include='number')
-    df = df.drop(columns=['nb_major_vessels'])
     
     outliers_info = []
     
