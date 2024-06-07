@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
    
-def make_count_plots(df, columns):
+def make_count_plots(df, columns, hue='heart_disease_diagnosis'):
     """
     Makes countplots of a variable
     to visualize its distribution.
@@ -20,7 +20,7 @@ def make_count_plots(df, columns):
     """
     
     for column in columns:
-        sns.countplot(data = df, x = column)
+        sns.countplot(data = df, x = column, hue=hue, legend=False)
         plt.ylabel('number of patients')
         plt.title(f'Distribution of {column}')
         plt.show()
@@ -96,7 +96,7 @@ def contingency_table(data, column):
     data_crosstab = pd.crosstab(index=[data[column]], columns=data['heart_disease_diagnosis'])
     fig = plt.figure(figsize = (10,10))
     fig.add_subplot()    
-    sns.heatmap(data_crosstab)
+    sns.heatmap(data_crosstab, annot=True, fmt='d', cmap=sns.cm.rocket_r)
     plt.title('Contingency table')
     plt.show()
     
@@ -115,7 +115,7 @@ def look_for_correlations(df):
     plt.suptitle('Exploratory data visualization of numerical features')
     plt.show()
     
-    sns.heatmap(num_df.corr(), cmap = 'RdYlGn', vmin = -0.5, vmax =0.5)
+    sns.heatmap(num_df.corr(), cmap = 'RdYlGn', vmin = -0.5, vmax =0.5, annot=True, fmt='.2f' )
     plt.title('Correlation heatmap')
     plt.show()
     
@@ -129,7 +129,7 @@ def plot_all(df):
         df (dataframe): write name of the processed dataframe
     """
 
-    make_count_plots(df, ['sex', 'heart_disease_diagnosis'])
+    make_count_plots(df, ['sex', 'heart_disease_diagnosis'], hue='heart_disease_diagnosis')
 
     hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis')
 
