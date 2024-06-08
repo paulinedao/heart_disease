@@ -25,7 +25,7 @@ class TestPlotting(unittest.TestCase):
         
     def test_make_count_plots(self):
         # Check if the function executes without errors
-        make_count_plots(self._df, ['heart_disease_diagnosis'])
+        make_count_plots(self._df, 'heart_disease_diagnosis')
 
     def test_hist_plot_numericals(self):
         # Check if the function executes without errors

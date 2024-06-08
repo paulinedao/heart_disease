@@ -9,21 +9,21 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
    
-def make_count_plots(df, columns, hue='heart_disease_diagnosis'):
+def make_count_plots(df, column, hue='heart_disease_diagnosis'):
     """
     Makes countplots of a variable
     to visualize its distribution.
     
     Args:
         df (dataframe): name of the dataframe you want to use
-        columns (list): takes a list of columns to visualize the variables
+        columns (string): column name as string to visualize the variables
     """
     
-    for column in columns:
-        sns.countplot(data = df, x = column, hue=hue, legend=False)
-        plt.ylabel('number of patients')
-        plt.title(f'Distribution of {column}')
-        plt.show()
+    #for column in columns:
+    sns.countplot(data = df, x = column, hue=hue, legend=False)
+    plt.ylabel('number of patients')
+    plt.title(f'Distribution of {column}')
+    plt.show()
     
    
 
@@ -129,7 +129,9 @@ def plot_all(df):
         df (dataframe): write name of the processed dataframe
     """
 
-    make_count_plots(df, ['sex', 'heart_disease_diagnosis'], hue='heart_disease_diagnosis')
+    make_count_plots(df, 'heart_disease_diagnosis', hue='heart_disease_diagnosis')
+    
+    make_count_plots(df, 'sex', hue='sex')
 
     hist_plot_numericals(df, hue_variable = 'heart_disease_diagnosis')
 

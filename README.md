@@ -79,7 +79,7 @@ python3.11 main.py --all
 The first module 'load' takes the path to the file to load and saves the dataframe into df. The othere modules take the dataframe df. 
 
 ### Output
-The output of load and process is the dataframe, where the processing steps have been done on the file. The plotting module outputs 8 plots to answer questions that are written in the [report][heart_disease.ipynb].
+The output of load and process is the dataframe, where the processing steps have been done on the file. After the processing, the file is saved as 'processed_data.csv'. The plotting module outputs 8 plots to answer questions that are written in the [report](heart_disease/heart_disease.ipynb).
 
 
 ## Modularity and reusability
