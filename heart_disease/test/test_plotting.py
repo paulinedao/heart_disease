@@ -1,5 +1,5 @@
 """
-Module for testing
+Module to test plotting
 """
 
 import sys

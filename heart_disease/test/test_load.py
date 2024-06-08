@@ -1,5 +1,5 @@
 """
-Module for testing
+Module to test loading
 """
 import sys
 import os

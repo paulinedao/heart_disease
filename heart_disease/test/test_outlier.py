@@ -1,5 +1,5 @@
 """
-Module for testing
+Module to test handling outliers
 """
 import sys
 import os
@@ -24,6 +24,11 @@ class TestOutlier(unittest.TestCase):
         )
 
     def test_outlier_report_handle_1(self):
+        """ Checks that the dataframe 
+        after handling outliers with 
+        a z-score=2 is equal
+        to the expected one"""
+        
         df_test_1 = outlier_report_handle(self.df, 2)
 
         output_df1 = pd.DataFrame(
@@ -33,6 +38,11 @@ class TestOutlier(unittest.TestCase):
         pd.testing.assert_frame_equal(df_test_1.reset_index(drop=True), output_df1)
 
     def test_outlier_report_handle_2(self):
+        """ Checks that the dataframe 
+        after handling outliers with 
+        a z-score=2 is equal
+        to the expected one"""
+        
         df_test_2 = outlier_report_handle(self.df, 3)
 
         output_df2 = pd.DataFrame(
