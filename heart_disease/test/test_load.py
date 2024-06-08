@@ -20,6 +20,10 @@ class TestLoad(unittest.TestCase):
         cls._df = load_data("data/raw_data/processed.cleveland.data")
 
     def test_load_data(self):
+        """ Checks that a dataframe is loaded
+        and that the column names are correct
+        """
+        
         # check if the loaded data type is a dataframe
         self.assertIsInstance(self._df, pd.DataFrame)
 
