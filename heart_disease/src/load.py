@@ -9,7 +9,7 @@ def load_data(path):
     """
     load the data and creates the column names
     Args:
-        path (string): _description_
+        path (string): path to the data
     """
     df = pd.read_csv(path, header=None, na_values="?")
 

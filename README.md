@@ -116,3 +116,5 @@ To generate a report:
 ```bash
 coverage report -m
 ```
+## License
+The code in this repository is licensed under the [MIT License](LICENSE.md).

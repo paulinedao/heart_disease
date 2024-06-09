@@ -81,7 +81,7 @@ def outlier_report_handle(df, zscorethreshold):
         zscorethreshold (float): z-score threshold to apply
 
     Returns:
-        _type_: _description_
+        dataframe: returns the dataframe
     """
     outlier_report(df, zscorethreshold)
     df = handle_outliers(df, zscorethreshold)

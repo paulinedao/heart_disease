@@ -53,10 +53,13 @@ def impute_nan(df):
 
     df_clean = pd.DataFrame(data=data_column_transformed, columns=input_features)
 
+    #reassign categories
     df_clean[boolean_features] = df_clean[boolean_features].astype("bool")
     df_clean[numerical_features] = df_clean[numerical_features].astype("float64")
     df_clean[categorical_features] = df_clean[categorical_features].astype("category")
 
+    df.to_csv("data/processed_data/clean_data.csv")
+    
     return df_clean
 
 

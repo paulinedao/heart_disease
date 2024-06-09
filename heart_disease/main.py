@@ -16,7 +16,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--clean", action="store_true", help="Clean duplicates and NaNs"
     )
-    parser.add_argument("--outlier", action="store_true", help="Handle outliers")
     parser.add_argument("--all", action="store_true", help="Run all blocks")
 
     args = parser.parse_args()
@@ -33,17 +32,13 @@ if __name__ == "__main__":
             print("Process the data first by entering --process in the terminal")
 
     if args.clean:
-        clean_all(df)
-
-    if args.outlier:
         if os.path.exists("data/processed_data/processed_data.csv"):
             df = pd.read_csv("data/processed_data/processed_data.csv")
-            df = outlier_report_handle(df, 3)
+            clean_all(df)
         else:
-            print("Process and clean the data first")
+            print("Process the data first by entering --process in the terminal")
 
     if args.all:
         df = process_all("data/raw_data/processed.cleveland.data")
         clean_all(df)
-        handle_outliers(df, 3)
         plot_all(df)
