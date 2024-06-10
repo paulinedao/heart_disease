@@ -49,10 +49,13 @@ pip install -r requirements.txt
 ## Run the package
 The package has been parsed to allow the user to run the whole package or only selected part.
 ### Run parts
-The package contains 3 modules:
+The package contains several modules:
 1. load
 2. process
-3. plotting
+3. clean
+4. outlier
+5. plotting
+6. statistics
 
 The 'process' module will load the data before processing the data. 
 To load and process the data, write:
