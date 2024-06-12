@@ -113,7 +113,7 @@ def contingency_table(data, column):
     data_crosstab = pd.crosstab(
         index=[data[column]], columns=data["heart_disease_diagnosis"]
     )
-    fig = plt.figure(figsize=(10, 10))
+    fig = plt.figure(figsize=(5, 5))
     fig.add_subplot()
     sns.heatmap(data_crosstab, annot=True, fmt="d", cmap=sns.cm.rocket_r)
     plt.title("Contingency table")
