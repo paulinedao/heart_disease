@@ -8,8 +8,9 @@ from scipy import stats
 
 def outlier_report(df, zscorethreshold):
     """
-    For each column with outliers,
-    the dataframe with the values is returned.
+    Makes a report of the rows
+    containing outliers and 
+    prints the index and the values.
 
     Args:
         df (dataframe): dataframe

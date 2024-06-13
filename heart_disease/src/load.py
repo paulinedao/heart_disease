@@ -34,10 +34,12 @@ def load_data(path):
 
 
 def describe_data(df):
-    """_summary_
+    """
+    Prints the shape of the data,
+    infos and a statistics summary.
 
     Args:
-        df (_type_): _description_
+        df (dataframe): name of the dataframe
     """
 
     shape_of_data = df.shape

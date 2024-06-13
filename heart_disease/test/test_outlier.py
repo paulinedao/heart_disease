@@ -40,7 +40,7 @@ class TestOutlier(unittest.TestCase):
     def test_outlier_report_handle_2(self):
         """ Checks that the dataframe 
         after handling outliers with 
-        a z-score=2 is equal
+        a z-score=3 is equal
         to the expected one"""
         
         df_test_2 = outlier_report_handle(self.df, 3)

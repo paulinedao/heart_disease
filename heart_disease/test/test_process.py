@@ -16,7 +16,7 @@ from src.process import process_all
 
 class TestProcess(unittest.TestCase):
     @classmethod
-    # load the dataframe to use it as a test
+    # load and process the dataframe to use it as a test
     def setUp(cls):
         cls._df = process_all("data/raw_data/processed.cleveland.data")
 
