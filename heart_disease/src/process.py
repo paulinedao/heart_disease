@@ -86,7 +86,7 @@ def process_all(path):
     """
     df = load_data(path)
 
-    process_categorical_columns(df)
-    process_boolean_columns(df)
+    df = process_categorical_columns(df)
+    df = process_boolean_columns(df)
     df.to_csv("data/processed_data/processed_data.csv")
     return df

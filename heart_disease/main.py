@@ -40,5 +40,5 @@ if __name__ == "__main__":
 
     if args.all:
         df = process_all("data/raw_data/processed.cleveland.data")
-        clean_all(df)
+        df = clean_all(df)
         plot_all(df)
