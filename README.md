@@ -18,9 +18,9 @@
 
 
 ## Description
-The heart_disease package was written to process the dataset to be able to visualize the data and draw insights from it. 
+The heart_disease package was written to process the [Cleveland Heart Disease Dataset](https://archive.ics.uci.edu/dataset/45/heart+disease?fbclid=IwAR3RjwfHPg251wjyPMZjGrU1OFZxp-Odh6g6LJTjLSiuDln91k-BUoMVssY) to be able to visualize the data and draw insights from it. 
 
-The package contains modules to load, process the data, generate plots and clean the dataset. Check the jupyter notebook 'heart_disease.ipynb' here [report](heart_disease/heart_disease.ipynb)
+The package contains modules to load, process the data, generate plots and clean the dataset. Check the [jupyter notebook 'heart_disease.ipynb'](heart_disease/heart_disease.ipynb)
 
 ## Organization of the package
 The package heart_disease contains a module 'main' as well as the report. There are 4 modules to prepare the data located in 'heart_disease/src'. The original dataset is in 'heart_disease/data/raw_data/processed.cleveland.data'.
@@ -31,7 +31,7 @@ The package heart_disease contains a module 'main' as well as the report. There 
 
 clone the repository
 ```bash
-git clone [github url]
+git clone https://github.com/paulinedao/heart_disease.git
 ```
 
 Navigate to the project directory:
@@ -59,29 +59,29 @@ The package contains several modules:
 The 'process' module will load the data before processing the data. 
 To load and process the data, write:
 ```bash
-python3.11 main.py --process
+python main.py --process
 ```
 
 To run the 'plotting' module you need to process the data beforehand. To generate plots, write:
 ```bash
-python3.11 main.py --plot
+python main.py --plot
 ```
 
 To module 'clean' is used on thee processed dataset. To clean the data, write:
 ```bash
-python3.11 main --clean
+python main --clean
 ```
 
 ### Run all
 To run all, write:
 ```bash
-python3.11 main.py --all
+python main.py --all
 ```
 ### Input
-The first module 'load' takes the path to the file to load and saves the dataframe into df. The othere modules take the dataframe df. 
+The first module 'load' takes the path to the file to load and returns a pandas dataframe. 
 
 ### Output
-The output of load and process is the dataframe, where the processing steps have been done on the file. After the processing, the file is saved as 'processed_data.csv'. After cleaning, the file is saved as 'clean_data.csv'.  The plotting module outputs several plots to answer questions that are written in the [report](heart_disease/heart_disease.ipynb).
+The output of load and process is the dataframe, where the processing steps have been done on the file. After the processing, the file is saved as 'processed_data.csv' in the folder 'data/processed_data'. After cleaning, the file is saved as 'clean_data.csv' in the same folder 'data/processed_data'.  The plotting module outputs several plots to answer questions that are written in the [report](heart_disease/heart_disease.ipynb).
 
 
 ## Modularity and reusability
@@ -93,18 +93,18 @@ The 4 modules 'load', 'process', 'plotting', 'clean' are in the folder 'src'. He
 - 'clean' functions are in heart_disease/src/clean.py
 
 ### Reusability
-This package was written to proceess the Cleveland dataset from UC Irvine Machine Learning Repository. The generated plots using the function 'plot_all(df)' will genrate per default 8 plots, to answer the questions mentionned in the [report]. 
+This package was written to proceess the Cleveland dataset from UC Irvine Machine Learning Repository. The generated plots using the function 'plot_all(df)' will generate per default several plots, to answer the questions mentionned in the [report](heart_disease/heart_disease.ipynb). 
 
-However, th user is free to use the plotting functions to visualize other features by specifying the 'columns' argument for each function.
+However, the user is free to use the plotting functions to visualize other features by specifying the 'columns' argument for each function.
 
 ## Run unit tests
 A unit test was developed for each module to verify the basic functionning of the code.
 
 ```bash
-python3.11 test/test_load.py
-python3.11 test/test_process.py
-python3.11 test/test_plotting.py
-python3.11 test/test_clean.py
+python test/test_load.py
+python test/test_process.py
+python test/test_plotting.py
+python test/test_clean.py
 ```
 
 To check the coverage of the test:
