@@ -55,7 +55,6 @@ The package contains several modules:
 3. clean
 4. outlier
 5. plotting
-6. statistics
 
 The 'process' module will load the data before processing the data. 
 To load and process the data, write:
