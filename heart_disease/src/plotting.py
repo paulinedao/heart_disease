@@ -146,7 +146,7 @@ def plot_all(df):
     """
     Makes plots assuming that the dataframe
     was loaded and processed first.
-    A total of 8 defaults plots will be generated.
+    
 
     Args:
         df (dataframe): write name of the processed dataframe

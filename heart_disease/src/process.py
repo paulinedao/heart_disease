@@ -55,7 +55,7 @@ def process_categorical_columns(df):
 def process_boolean_columns(df):
     """
     For boolean variables,
-    converts the type einto boolean
+    converts the type into boolean
     and renames the columns.
 
     Args:
@@ -76,13 +76,15 @@ def process_boolean_columns(df):
 def process_all(path):
     """
     Loads and processes
-    the data.
+    the data. Creates and saves 
+    the processed data in a 
+    csv file.
 
     Args:
         path (string): path of the file
 
     Returns:
-        csv file: creates a csv file 
+        procssed dataframe 
     """
     df = load_data(path)
 
